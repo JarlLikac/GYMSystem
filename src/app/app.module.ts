@@ -7,16 +7,24 @@ import {TooltipModule} from "ngx-bootstrap/tooltip";
 import { AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
 import { LoginComponent } from './login/login.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ListadoClientesComponent } from './listado-clientes/listado-clientes.component';
+import { AppRoutingModule } from './app-routing.module';
+import {AngularFirestore} from "@angular/fire/compat/firestore";
+import { AgregarClienteComponent } from './agregar-cliente/agregar-cliente.component';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    NavBarComponent
+    NavBarComponent,
+    ListadoClientesComponent,
+    AgregarClienteComponent
   ],
     imports: [
         BrowserModule,
@@ -27,10 +35,15 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
         ReactiveFormsModule,
         BrowserAnimationsModule,
         NgxSpinnerModule,
-        NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
+        NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
+        BsDropdownModule.forRoot(),
+        AppRoutingModule,
+        FormsModule,
+        ProgressbarModule.forRoot()
     ],
   providers: [
-    AngularFireModule
+    AngularFireModule,
+    AngularFirestore
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
